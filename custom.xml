@@ -1,0 +1,6 @@
+<custom-actions>
+  <action>
+    <type>createPagerDutyAlarm</type>
+    <executable>createPagerDutyAlarm.sh</executable>
+  </action>
+</custom-actions>

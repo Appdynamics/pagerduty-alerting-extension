@@ -2,9 +2,7 @@
 
 ##Use Case
 
-PagerDuty provides SaaS IT on-call 
-schedule management, alerting and incident tracking.
-AppDynamics integrates directly with PagerDuty to create incidents in response to alerts. With the PagerDuty integration you can leverage your existing alerting infrastructure to notify the operations team to resolve performance degradation.
+PagerDuty provides SaaS IT on-call schedule management, alerting and incident tracking. AppDynamics integrates directly with PagerDuty to create incidents in response to alerts. With the PagerDuty integration you can leverage your existing alerting infrastructure to notify the operations team to resolve performance degradation.
 
 ##Installation
 
@@ -239,16 +237,15 @@ AppDynamics integrates directly with PagerDuty to create incidents in response t
 ![](http://appsphere.appdynamics.com/t5/image/serverpage/image-id/87i53C89765515BD9EF/image-size/original?v=mpbl-1&px=-1)
 
 
+
 ##Contributing
 
+Always feel free to fork and contribute any changes directly via [GitHub](https://github.com/Appdynamics/pagerduty-alerting-extension).
 
-Always feel free to fork and contribute any changes directly via GitHub.
+##Community
 
+Find out more in the [AppSphere](http://appsphere.appdynamics.com/t5/Extensions/PagerDuty-Alerting-Extension/idi-p/747) community.
 
 ##Support
 
-For any support questions, please contact ace@appdynamics.com.
-
-
-
-
+For any questions or feature request, please contact [AppDynamics Center of Excellence](mailto://ace-request@appdynamics.com).

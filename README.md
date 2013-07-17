@@ -1,4 +1,4 @@
-# AppDynamics PagerDuty Extension
+# AppDynamics PagerDuty - Alerting Extension
 
 ##Use Case
 

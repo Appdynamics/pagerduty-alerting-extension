@@ -215,7 +215,9 @@ PagerDuty provides SaaS IT on-call schedule management, alerting and incident tr
 
 2. Install Custom Actions
 
-   To create a Custom Action using PagerDuty, first refer to the "Installing Custom Actions into the Controller" topic [here](http://docs.appdynamics.com/display/PRO12S/Configure+Custom+Notifications#ConfigureCustomNotifications-InstallingCustomActionsontheController) (requires login).
+   To create a Custom Action using PagerDuty, first refer to the the following topic (requires login):
+      * 3.6 - [Installing Custom Actions on the Controller](http://docs.appdynamics.com/display/PRO12S/Configure+Custom+Notifications#ConfigureCustomNotifications-InstallingCustomActionsontheController)
+      * 3.7 - [Build an Alerting Extension](http://docs.appdynamics.com/display/PRO13S/Build+an+Alerting+Extension)
 
    The custom.xml file and createPagerDutyAlarm directory used for this custom notification are located within the IntegrationsSDK/CustomNotification/alarming/ directory.
 

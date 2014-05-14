@@ -10,7 +10,7 @@ PagerDuty provides SaaS IT on-call schedule management, alerting and incident tr
 
 ##Installation Steps
 
- 1. Run "mvn clean install"
+ 1. Run "mvn clean install -DskipTest". You can run the test by configuring the service key in the config.yaml file.
 
  2. Find the zip file at 'target/pagerduty-alert.zip' or Download the PagerDuty Alerting Extension zip from [AppDynamics Exchange](http://community.appdynamics.com/t5/AppDynamics-eXchange/idb-p/extensions)
 

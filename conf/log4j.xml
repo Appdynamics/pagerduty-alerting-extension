@@ -16,7 +16,7 @@
     </layout> 
   </appender> 
   
-  <logger name="com.appdynamics.extensions.victorops" additivity="false">
+  <logger name="com.appdynamics.extensions.pagerduty" additivity="false">
 	<level value="info"/>
 	<appender-ref ref="RollingFileAppender"/>
 	<appender-ref ref="ConsoleAppender"/>

@@ -268,9 +268,9 @@ PagerDuty provides SaaS IT on-call schedule management, alerting and incident tr
 
 2. Installing Custom Actions:
 
-         To create a Custom Action, first refer to the the following topics (requires login):
-         * [Creating custom action](http://docs.appdynamics.com/display/PRO14S/Custom+Actions)
-         * [Build an Alerting Extension](http://docs.appdynamics.com/display/PRO14S/Build+an+Alerting+Extension)
+     To create a Custom Action, first refer to the the following topics (requires login):
+     * [Creating custom action](http://docs.appdynamics.com/display/PRO14S/Custom+Actions)
+     * [Build an Alerting Extension](http://docs.appdynamics.com/display/PRO14S/Build+an+Alerting+Extension)
 
 Now you are ready to use this extension as a custom action. In the AppDynamics UI, go to Alert & Respond -> Actions. Click Create Action. Select Custom Action and click OK. In the drop-down menu you can find the action called 'pagerduty-alert'.
 

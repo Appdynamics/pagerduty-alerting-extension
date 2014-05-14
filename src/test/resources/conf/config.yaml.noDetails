@@ -1,0 +1,21 @@
+#PagerDuty Service Key
+serviceKey: ""
+
+#scheme used (http/https)
+protocol: "https"
+
+#PagerDuty host
+host: "events.pagerduty.com"
+
+#PagerDuty url path
+urlPath: "/generic/2010-04-15/create_event.json"
+
+#http timeouts
+connectTimeout: 10000
+socketTimeout: 10000
+
+#show appdynamics details in VO alert
+showDetails: false
+
+
+

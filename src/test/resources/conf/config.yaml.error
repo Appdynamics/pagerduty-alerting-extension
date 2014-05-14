@@ -1,0 +1,8 @@
+
+#http timeouts
+connetTimeout: 10000
+socketTimeout: 10000
+
+
+
+

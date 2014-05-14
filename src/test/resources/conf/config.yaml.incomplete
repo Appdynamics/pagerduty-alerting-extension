@@ -1,0 +1,11 @@
+#PagerDuty Service Key
+serviceKey: ""
+
+#scheme used (http/https)
+protocol: "https"
+
+#PagerDuty host
+host: "events.pagerduty.com"
+
+
+

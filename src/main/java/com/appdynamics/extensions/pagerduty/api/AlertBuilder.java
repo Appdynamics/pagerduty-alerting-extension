@@ -57,7 +57,7 @@ public class AlertBuilder {
             setSeverity(otherEvent.getSeverity(),otherEvent);
             alert.setServiceKey(config.getServiceKey());
             alert.setIncidentKey(getIncidentKey(otherEvent));
-            alert.setEventType(getEventTypes(otherEvent));
+            alert.setEventType(TRIGGER);
             alert.setDetails(getSummary(otherEvent, Boolean.valueOf(config.getShowDetails())));
             alert.setDescription(getDescription(otherEvent));
             return alert;

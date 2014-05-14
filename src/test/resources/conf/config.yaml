@@ -1,5 +1,5 @@
 #PagerDuty Service Key
-serviceKey: ""
+serviceKey: "82384c65bf514e568bd045a09b516a68"
 
 #scheme used (http/https)
 protocol: "https"

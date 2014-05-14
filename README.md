@@ -4,15 +4,68 @@
 
 PagerDuty provides SaaS IT on-call schedule management, alerting and incident tracking. AppDynamics integrates directly with PagerDuty to create incidents in response to alerts. With the PagerDuty integration you can leverage your existing alerting infrastructure to notify the operations team to resolve performance degradation.
 
-##Installation
+### Prerequisites
 
-1. Modify the IntegrationsSDK/CustomNotification/alarming/createPagerDutyAlarm/params.sh  file as follows:
+- You should have a PagerDuty Service Key
 
-  a. Modify the API_KEY variable to be a the API key that is generated through PagerDuty when a new service is created in your specific environment
+##Installation Steps
 
-  b. Notice that in the createPagerDutyAlarm.sh file that the AppDynamics parameters have been formatted into a custom JSON object to be viewed later in the designated PagerDuty service.
+ 1. Run "mvn clean install"
 
-    The createPagerDutyAlarm.sh file follows the following table to tie in the parameters together:
+ 2. Find the zip file at 'target/pagerduty-alert.zip' or Download the PagerDuty Alerting Extension zip from [AppDynamics Exchange](http://community.appdynamics.com/t5/AppDynamics-eXchange/idb-p/extensions)
+
+ 3. Unzip the pagerduty-alert.zip file into <CONTROLLER_HOME_DIR>/custom/actions/ . You should have  <CONTROLLER_HOME_DIR>/custom/actions/pagerduty-alert created.
+
+ 4. Check if you have custom.xml file in <CONTROLLER_HOME_DIR>/custom/actions/ directory. If yes, add the following xml to the <custom-actions> element.
+ 
+   ```
+      <action>
+    		  <type>pagerduty-alert</type>
+          <!-- For Linux/Unix *.sh -->
+     		  <executable>pagerduty-alert.sh</executable>
+          <!-- For windows *.bat -->
+     		  <!--<executable>pagerduty-alert.bat</executable>-->
+      </action>
+      ```
+      If you don't have custom.xml already, create one with the below xml content
+    
+      ```
+      <custom-actions>
+          <action>
+      		  <type>pagerduty-alert</type>
+            <!-- For Linux/Unix *.sh -->
+       		  <executable>pagerduty-alert.sh</executable>
+            <!-- For windows *.bat -->
+       		  <!--<executable>pagerduty-alert.bat</executable>-->
+     	    </action>
+        </custom-actions>
+      ```
+      Uncomment the appropriate executable tag based on windows or linux/unix machine.
+    
+    5. Update the config.yaml file in <CONTROLLER_HOME_DIR>/custom/actions/pagerduty-alert/conf/ directory with the Service Key. You can also configure the level of details sent to PagerDuty.
+    	
+      ```
+    	#PagerDuty Service Key
+        serviceKey: ""
+
+        #scheme used (http/https)
+        protocol: "https"
+
+        #PagerDuty host
+        host: "events.pagerduty.com"
+
+        #PagerDuty url path
+        urlPath: "/generic/2010-04-15/create_event.json"
+
+        #http timeouts
+        connectTimeout: 10000
+        socketTimeout: 10000
+
+        #show appdynamics details in pagerduty alert
+        showDetails: true
+      ```
+
+    Below is how the AppDynamics event's parameters are associated with PagerDuty parameters:
 
 	<table>
 	<tr>
@@ -213,15 +266,13 @@ PagerDuty provides SaaS IT on-call schedule management, alerting and incident tr
 
 	</table>
 
-2. Install Custom Actions
+2. Installing Custom Actions:
 
-   To create a Custom Action using PagerDuty, first refer to the the following topic (requires login):
-      * 3.6 - [Installing Custom Actions on the Controller](http://docs.appdynamics.com/display/PRO12S/Configure+Custom+Notifications#ConfigureCustomNotifications-InstallingCustomActionsontheController)
-      * 3.7 - [Build an Alerting Extension](http://docs.appdynamics.com/display/PRO13S/Build+an+Alerting+Extension)
+         To create a Custom Action, first refer to the the following topics (requires login):
+         * [Creating custom action](http://docs.appdynamics.com/display/PRO14S/Custom+Actions)
+         * [Build an Alerting Extension](http://docs.appdynamics.com/display/PRO14S/Build+an+Alerting+Extension)
 
-   The custom.xml file and createPagerDutyAlarm directory used for this custom notification are located within the IntegrationsSDK/CustomNotification/alarming/ directory.
-
-   Place the createPagerDutyAlarm directory (containing params.sh and createPagerDutyAlarm.sh) along with the custom.xml file into the <controller_install_dir>/custom/actions/ directory.
+Now you are ready to use this extension as a custom action. In the AppDynamics UI, go to Alert & Respond -> Actions. Click Create Action. Select Custom Action and click OK. In the drop-down menu you can find the action called 'pagerduty-alert'.
 
 3. Look for the newest created Incident in PagerDuty.
 
@@ -239,15 +290,13 @@ PagerDuty provides SaaS IT on-call schedule management, alerting and incident tr
 ![](http://appsphere.appdynamics.com/t5/image/serverpage/image-id/87i53C89765515BD9EF/image-size/original?v=mpbl-1&px=-1)
 
 
-
 ##Contributing
 
-Always feel free to fork and contribute any changes directly via [GitHub](https://github.com/Appdynamics/pagerduty-alerting-extension).
-
-##Community
-
-Find out more in the [AppSphere](http://appsphere.appdynamics.com/t5/Extensions/PagerDuty-Alerting-Extension/idi-p/747) community.
+Find out more in the [AppDynamics Exchange](http://community.appdynamics.com/t5/AppDynamics-eXchange/idb-p/extensions)
 
 ##Support
 
 For any questions or feature request, please contact [AppDynamics Center of Excellence](mailto:ace-request@appdynamics.com).
+
+**Version:** 1.1
+**Controller Compatibility:** 3.7+

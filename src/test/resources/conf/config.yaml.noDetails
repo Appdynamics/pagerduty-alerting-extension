@@ -14,7 +14,7 @@ urlPath: "/generic/2010-04-15/create_event.json"
 connectTimeout: 10000
 socketTimeout: 10000
 
-#show appdynamics details in VO alert
+#show appdynamics details in pagerduty alert
 showDetails: false
 
 

@@ -8,7 +8,7 @@
     </appender>
 
   <appender name="RollingFileAppender" class="org.apache.log4j.RollingFileAppender"> 
-    <param name="file" value="logs/victorOpsAlert.log"/>
+    <param name="file" value="logs/pagerDutyAlert.log"/>
     <param name="MaxFileSize" value="5000KB"/>
     <param name="MaxBackupIndex" value="5"/>
     <layout class="org.apache.log4j.PatternLayout"> 

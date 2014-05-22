@@ -26,8 +26,9 @@ PagerDuty provides SaaS IT on-call schedule management, alerting and incident tr
           <!-- For windows *.bat -->
      		  <!--<executable>pagerduty-alert.bat</executable>-->
       </action>
-      ```
-      If you don't have custom.xml already, create one with the below xml content
+  ```
+     
+   If you don't have custom.xml already, create one with the below xml content
     
       ```
       <custom-actions>
@@ -48,26 +49,27 @@ PagerDuty provides SaaS IT on-call schedule management, alerting and incident tr
 Please make sure to not use tab (\t) while editing yaml files. You may want to validate the yaml file using a yaml validator http://yamllint.com/
 
     	
-      ```
-    	#PagerDuty Service Key
-        serviceKey: ""
-
-        #scheme used (http/https)
-        protocol: "https"
-
-        #PagerDuty host
-        host: "events.pagerduty.com"
-
-        #PagerDuty url path
-        urlPath: "/generic/2010-04-15/create_event.json"
-
-        #http timeouts
-        connectTimeout: 10000
-        socketTimeout: 10000
-
-        #show appdynamics details in pagerduty alert
-        showDetails: true
-      ```
+```	
+	#PagerDuty Service Key
+	serviceKey: ""
+		
+	#scheme used (http/https)
+	protocol: "https"
+	
+	#PagerDuty host
+	host: "events.pagerduty.com"
+	
+	#PagerDuty url path
+	urlPath: "/generic/2010-04-15/create_event.json"
+	
+	#http timeouts
+	connectTimeout: 10000
+	socketTimeout: 10000
+	
+	#show appdynamics details in pagerduty alert
+	showDetails: true      
+```        
+         
 
     Below is how the AppDynamics event's parameters are associated with PagerDuty parameters:
 

@@ -43,6 +43,10 @@ PagerDuty provides SaaS IT on-call schedule management, alerting and incident tr
       Uncomment the appropriate executable tag based on windows or linux/unix machine.
     
     5. Update the config.yaml file in <CONTROLLER_HOME_DIR>/custom/actions/pagerduty-alert/conf/ directory with the Service Key. You can also configure the level of details sent to PagerDuty.
+
+###Note
+Please make sure to not use tab (\t) while editing yaml files. You may want to validate the yaml file using a yaml validator http://yamllint.com/
+
     	
       ```
     	#PagerDuty Service Key

@@ -71,7 +71,7 @@ Please make sure to not use tab (\t) while editing yaml files. You may want to v
 ```        
          
 
-    Below is how the AppDynamics event's parameters are associated with PagerDuty parameters:
+Below is how the AppDynamics event's parameters are associated with PagerDuty parameters:
 
 	<table>
 	<tr>

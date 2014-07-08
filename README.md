@@ -1,6 +1,6 @@
 # AppDynamics PagerDuty - Alerting Extension
 
-This extension works only with a dedicated SaaS controller or an on-prem controller. For multi-tenant alerting extension for pager duty visit [here](http://community.appdynamics.com/t5/AppDynamics-eXchange/PagerDuty-Alerting-Extension-for-Multi-tenant-SaaS-customers/idi-p/9346)
+This extension works only with a dedicated SaaS controller or an on-prem controller. 
 
 ##Use Case
 

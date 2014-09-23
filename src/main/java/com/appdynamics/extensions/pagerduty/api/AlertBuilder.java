@@ -26,12 +26,7 @@ public class AlertBuilder {
             Alert alert = new Alert();
             alert.setServiceKey(config.getServiceKey());
             alert.setIncidentKey(getIncidentKey(violationEvent));
-            if(violationEvent.getEventType().equalsIgnoreCase(POLICY_CLOSE)){
-                alert.setEventType(RESOLVE);
-            }
-            else{
-                alert.setEventType(TRIGGER);
-            }
+            alert.setEventType(getEventType(violationEvent.getEventType()));
             setSeverity(violationEvent.getSeverity(),violationEvent);
             alert.setDetails(getSummary(violationEvent,Boolean.valueOf(config.getShowDetails())));
             alert.setDescription(getDescription(violationEvent));
@@ -40,6 +35,13 @@ public class AlertBuilder {
         return null;
     }
 
+    private String getEventType(String eventType){
+        if(eventType != null && eventType.equalsIgnoreCase(POLICY_CLOSE)){
+            return RESOLVE;
+        }
+        return TRIGGER;
+    }
+    
     private void setSeverity(String severity, Event event) {
         if(severity.equalsIgnoreCase("WARN")){
             event.setSeverity("WARNING");

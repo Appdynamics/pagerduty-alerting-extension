@@ -69,7 +69,10 @@ Please make sure to not use tab (\t) while editing yaml files. You may want to v
 	socketTimeout: 10000
 	
 	#show appdynamics details in pagerduty alert
-	showDetails: true      
+	showDetails: true
+
+	#public url for controller (http://<host>:<port> or https://<host>:<port>)
+    controllerUrl : ""
 ```        
          
 

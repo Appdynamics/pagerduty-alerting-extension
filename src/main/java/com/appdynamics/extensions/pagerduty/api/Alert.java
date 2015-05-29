@@ -20,6 +20,12 @@ public class Alert {
     @JsonProperty("description")
     private String description;
 
+    @JsonProperty("client")
+    private String client;
+
+    @JsonProperty("client_url")
+    private String clientUrl;
+
     public String getServiceKey() {
         return serviceKey;
     }
@@ -58,5 +64,21 @@ public class Alert {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getClient() {
+        return client;
+    }
+
+    public void setClient(String client) {
+        this.client = client;
+    }
+
+    public String getClientUrl() {
+        return clientUrl;
+    }
+
+    public void setClientUrl(String clientUrl) {
+        this.clientUrl = clientUrl;
     }
 }

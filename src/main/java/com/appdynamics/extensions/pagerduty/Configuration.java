@@ -10,6 +10,7 @@ public class Configuration {
     private String socketTimeout = "10000";
     private String urlPath;
     private String showDetails = "false";
+    private String controllerUrl;
 
 
     public String getServiceKey() {
@@ -66,5 +67,13 @@ public class Configuration {
 
     public void setShowDetails(String showDetails) {
         this.showDetails = showDetails;
+    }
+
+    public String getControllerUrl() {
+        return controllerUrl;
+    }
+
+    public void setControllerUrl(String controllerUrl) {
+        this.controllerUrl = controllerUrl;
     }
 }

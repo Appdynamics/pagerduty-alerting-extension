@@ -1,5 +1,5 @@
 #PagerDuty Service Key
-serviceKey: ""
+serviceKey: "5988aa894a874a52b9bc8591313fbae7"
 
 #scheme used (http/https)
 protocol: "https"
@@ -16,6 +16,9 @@ socketTimeout: 10000
 
 #show appdynamics details in pagerduty alert
 showDetails: true
+
+#public url for controller (http://<host>:<port> or https://<host>:<port>)
+controllerUrl : "http://mywindows.appdynamics.com:8090"
 
 
 

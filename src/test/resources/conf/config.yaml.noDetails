@@ -17,5 +17,7 @@ socketTimeout: 10000
 #show appdynamics details in pagerduty alert
 showDetails: false
 
+#public url for controller (http://<host>:<port> or https://<host>:<port>)
+controllerUrl : "http://mywindows.appdynamics.com:8090"
 
 

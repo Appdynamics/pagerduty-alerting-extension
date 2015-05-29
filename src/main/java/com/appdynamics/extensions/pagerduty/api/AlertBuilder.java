@@ -4,6 +4,7 @@ import com.appdynamics.extensions.alerts.customevents.*;
 import com.appdynamics.extensions.pagerduty.Configuration;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.common.base.Strings;
 import org.apache.log4j.Logger;
 
 /**
@@ -30,13 +31,17 @@ public class AlertBuilder {
             setSeverity(violationEvent.getSeverity(),violationEvent);
             alert.setDetails(getSummary(violationEvent,Boolean.valueOf(config.getShowDetails())));
             alert.setDescription(getDescription(violationEvent));
+            alert.setClient(APP_DYNAMICS);
+            alert.setClientUrl(getAlertUrl(config.getControllerUrl(),violationEvent));
             return alert;
         }
         return null;
     }
 
+
+
     private String getEventType(String eventType){
-        if(eventType != null && eventType.equalsIgnoreCase(POLICY_CLOSE)){
+        if(eventType != null && eventType.startsWith(POLICY_CLOSE)){
             return RESOLVE;
         }
         return TRIGGER;
@@ -48,6 +53,9 @@ public class AlertBuilder {
         }
         else if(severity.equalsIgnoreCase("INFO")){
             event.setSeverity("INFORMATION");
+        }
+        else{
+            event.setSeverity("CRITICAL");
         }
     }
 
@@ -62,6 +70,8 @@ public class AlertBuilder {
             alert.setEventType(TRIGGER);
             alert.setDetails(getSummary(otherEvent, Boolean.valueOf(config.getShowDetails())));
             alert.setDescription(getDescription(otherEvent));
+            alert.setClient(APP_DYNAMICS);
+            alert.setClientUrl(getAlertUrl(config.getControllerUrl(),otherEvent));
             return alert;
         }
         return null;
@@ -105,15 +115,6 @@ public class AlertBuilder {
     public String convertIntoJsonString(Alert alert) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
         return mapper.writeValueAsString(alert);
-    }
-
-
-
-    private String getAlertUrl(OtherEvent otherEvent) {
-        if(otherEvent.getEventSummaries().get(0)  != null) {
-            return otherEvent.getDeepLinkUrl() + otherEvent.getEventSummaries().get(0).getEventSummaryId();
-        }
-        return null;
     }
 
 
@@ -205,6 +206,28 @@ public class AlertBuilder {
         return otherEvent.getAppName()  + SLASH_SEPARATOR + otherEvent.getEventNotificationName();
     }
 
-
+    private String getAlertUrl(String controllerUrl, Event event) {
+        String url = event.getDeepLinkUrl();
+        if(Strings.isNullOrEmpty(controllerUrl)){
+            return url;
+        }
+        int startIdx = 0;
+        if(url.startsWith("http://")){
+            startIdx = "http://".length();
+        }
+        else if(url.startsWith("https://")){
+            startIdx = "https://".length();
+        }
+        int endIdx = url.indexOf("/",startIdx + 1);
+        String toReplace = url.substring(0,endIdx);
+        String alertUrl = url.replaceFirst(toReplace,controllerUrl);
+        if(event instanceof HealthRuleViolationEvent){
+            alertUrl += ((HealthRuleViolationEvent) event).getIncidentID();
+        }
+        else{
+            alertUrl += ((OtherEvent) event).getEventSummaries().get(0).getEventSummaryId();
+        }
+        return alertUrl;
+    }
 
 }

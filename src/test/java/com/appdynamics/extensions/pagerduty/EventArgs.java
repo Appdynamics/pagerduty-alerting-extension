@@ -28,10 +28,14 @@ public class EventArgs {
         strings.add("\"40.0\"");  //observed value 1
 
         generateTrailingArg(strings);
-
+        generateAccountInfo(strings);
         return Iterables.toArray(strings,String.class);
     }
 
+    private void generateAccountInfo(List<String> strings) {
+        strings.add("customer1");
+        strings.add("12sab23asl23");
+    }
 
 
     public String[] getHealthRuleViolationEventWithMultipleEvalEntityAndATriggerNoBaseline(){
@@ -68,6 +72,7 @@ public class EventArgs {
 
         //summary message
         generateTrailingArg(strings);
+        generateAccountInfo(strings);
         return Iterables.toArray(strings,String.class);
     }
 
@@ -119,6 +124,7 @@ public class EventArgs {
 
         //summary message
         generateTrailingArg(strings);
+        generateAccountInfo(strings);
         return Iterables.toArray(strings,String.class);
 
     }
@@ -175,6 +181,7 @@ public class EventArgs {
 
         //summary message
         generateTrailingArg(strings);
+        generateAccountInfo(strings);
         return Iterables.toArray(strings,String.class);
     }
 
@@ -211,6 +218,7 @@ public class EventArgs {
         strings.add("summary string"); //event summary string 2
 
         strings.add("\"http://PRINHYLTPHP0158:8090/controller/#location=APP_EVENT_VIEWER_MODAL&eventSummary=\"");
+        generateAccountInfo(strings);
         return Iterables.toArray(strings,String.class);
     }
 

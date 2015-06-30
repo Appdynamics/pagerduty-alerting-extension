@@ -16,6 +16,7 @@ import org.apache.log4j.Logger;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.HttpURLConnection;
+import java.util.Arrays;
 
 
 public class PagerDutyAlertExtension {
@@ -33,10 +34,12 @@ public class PagerDutyAlertExtension {
     Configuration config;
 
     public static void main(String[] args){
+        logger.info("*****************START******************");
         if(args == null || args.length == 0){
             logger.error("No arguments passed to the extension, exiting the program.");
             return;
         }
+        logger.debug("Arguments passed :: " + Arrays.asList(args));
         Configuration config = null;
         try {
             config = configUtil.readConfig(CONFIG_FILENAME, Configuration.class);
@@ -44,6 +47,7 @@ public class PagerDutyAlertExtension {
             boolean status = alertExtension.processAnEvent(args);
             if(status){
                 logger.info( "PagerDuty Extension completed successfully.");
+                logger.info("******************END******************");
                 return;
             }
 

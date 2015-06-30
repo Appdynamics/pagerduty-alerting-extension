@@ -20,6 +20,7 @@ public class AlertBuilder {
     public static final String POLICY_CLOSE = "POLICY_CLOSE";
     public static final String RESOLVE = "resolve";
     public static final String TRIGGER = "trigger";
+    public static final String POLICY_CANCELLED = "POLICY_CANCELLED";
     private static Logger logger = Logger.getLogger(AlertBuilder.class);
 
     public Alert buildAlertFromHealthRuleViolationEvent(HealthRuleViolationEvent violationEvent, Configuration config) {
@@ -41,12 +42,16 @@ public class AlertBuilder {
 
 
     private String getEventType(String eventType){
-        if(eventType != null && eventType.startsWith(POLICY_CLOSE)){
+        if(shouldResolveEvent(eventType)){
             return RESOLVE;
         }
         return TRIGGER;
     }
-    
+
+    private boolean shouldResolveEvent(String eventType) {
+        return eventType != null && (eventType.startsWith(POLICY_CLOSE) || eventType.startsWith(POLICY_CANCELLED));
+    }
+
     private void setSeverity(String severity, Event event) {
         if(severity.equalsIgnoreCase("WARN")){
             event.setSeverity("WARNING");

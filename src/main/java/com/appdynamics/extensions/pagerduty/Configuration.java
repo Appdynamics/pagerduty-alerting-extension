@@ -11,6 +11,9 @@ public class Configuration {
     private String urlPath;
     private String showDetails = "false";
     private String controllerUrl;
+    private String proxyHost;
+    private String proxyPort;
+    private String proxyUri;
 
 
     public String getServiceKey() {
@@ -76,4 +79,30 @@ public class Configuration {
     public void setControllerUrl(String controllerUrl) {
         this.controllerUrl = controllerUrl;
     }
+
+	public String getProxyHost() {
+		return proxyHost;
+	}
+
+	public void setProxyHost(String proxyHost) {
+		this.proxyHost = proxyHost;
+	}
+
+	public String getProxyPort() {
+		return proxyPort;
+	}
+
+	public void setProxyPort(String proxyPort) {
+		this.proxyPort = proxyPort;
+	}
+
+	public String getProxyUri() {
+		return proxyUri;
+	}
+
+	public void setProxyUri(String proxyUri) {
+		this.proxyUri = proxyUri;
+	}
+	
+    
 }

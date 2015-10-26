@@ -20,5 +20,8 @@ showDetails: false
 #public url for controller (http://<host>:<port> or https://<host>:<port>)
 controllerUrl : ""
 
-
+#proxy details, either provide proxyUri or provide proxyHost and proxyPort.
+proxyHost:
+proxyPort:
+proxyUri:
 

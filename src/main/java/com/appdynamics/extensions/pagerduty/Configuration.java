@@ -14,7 +14,9 @@ public class Configuration {
     private String proxyHost;
     private String proxyPort;
     private String proxyUri;
-
+    private String proxyUser;
+    private String proxyPassword;
+    private String proxyPasswordEncrypted;
 
     public String getServiceKey() {
         return serviceKey;
@@ -102,6 +104,30 @@ public class Configuration {
 
 	public void setProxyUri(String proxyUri) {
 		this.proxyUri = proxyUri;
+	}
+
+	public String getProxyUser() {
+		return proxyUser;
+	}
+
+	public void setProxyUser(String proxyUser) {
+		this.proxyUser = proxyUser;
+	}
+
+	public String getProxyPassword() {
+		return proxyPassword;
+	}
+
+	public void setProxyPassword(String proxyPassword) {
+		this.proxyPassword = proxyPassword;
+	}
+
+	public String getProxyPasswordEncrypted() {
+		return proxyPasswordEncrypted;
+	}
+
+	public void setProxyPasswordEncrypted(String proxyPasswordEncrypted) {
+		this.proxyPasswordEncrypted = proxyPasswordEncrypted;
 	}
 	
     

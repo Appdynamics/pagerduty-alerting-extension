@@ -1,17 +1,18 @@
 package com.appdynamics.extensions.pagerduty.common;
 
-import com.appdynamics.extensions.http.Response;
-import com.appdynamics.extensions.http.SimpleHttpClient;
-import com.appdynamics.extensions.pagerduty.Configuration;
-import com.google.common.base.Strings;
-
-import org.apache.log4j.Logger;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 
-import java.util.HashMap;
-import java.util.Map;
+import org.apache.log4j.Logger;
+
+import com.appdynamics.TaskInputArgs;
+import com.appdynamics.extensions.http.Response;
+import com.appdynamics.extensions.http.SimpleHttpClient;
+import com.appdynamics.extensions.pagerduty.Configuration;
+import com.google.common.base.Strings;
 
 public class HttpHandler {
 
@@ -19,9 +20,6 @@ public class HttpHandler {
     public static final String HTTP = "http";
     public static final String COLON = ":";
     public static final String FORWARD_SLASH = "/";
-    public static final String PROXY_HOST = "proxy-host";
-    public static final String PROXY_PORT = "proxy-port";
-    public static final String PROXY_URI = "proxy-uri";
 
     final Configuration config;
     private static Logger logger = Logger.getLogger(HttpHandler.class);
@@ -58,14 +56,25 @@ public class HttpHandler {
             map.put("use-ssl", "true");
         }
 		if (!Strings.isNullOrEmpty(this.config.getProxyHost())) {
-			map.put(PROXY_HOST, this.config.getProxyHost());
+			map.put(TaskInputArgs.PROXY_HOST, this.config.getProxyHost());
 		}
 		if (!Strings.isNullOrEmpty(this.config.getProxyPort())) {
-			map.put(PROXY_PORT, this.config.getProxyPort());
+			map.put(TaskInputArgs.PROXY_PORT, this.config.getProxyPort());
 		}
-		if (!Strings.isNullOrEmpty(this.config.getProxyHost())) {
-			map.put(PROXY_URI, this.config.getProxyUri());
+		if (!Strings.isNullOrEmpty(this.config.getProxyUri())) {
+			map.put(TaskInputArgs.PROXY_URI, this.config.getProxyUri());
 		}
+		if (!Strings.isNullOrEmpty(this.config.getProxyUser())) {
+			map.put(TaskInputArgs.PROXY_USER, this.config.getProxyUser());
+			// Don't put any password if not specified
+			if (!Strings.isNullOrEmpty(this.config.getProxyPassword())) {
+				map.put(TaskInputArgs.PROXY_PASSWORD, this.config.getProxyPassword());
+			}
+			else if (!Strings.isNullOrEmpty(this.config.getProxyPasswordEncrypted())) {
+				map.put(TaskInputArgs.PROXY_PASSWORD_ENCRYPTED, this.config.getProxyPasswordEncrypted());
+			}
+		}
+		
         return map;
     }
 

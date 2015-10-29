@@ -24,4 +24,7 @@ controllerUrl : ""
 proxyHost:
 proxyPort:
 proxyUri:
+proxyUser:
+proxyPassword:
+proxyPasswordEncrypted:
 

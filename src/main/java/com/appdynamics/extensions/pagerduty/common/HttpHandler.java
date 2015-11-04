@@ -1,14 +1,18 @@
 package com.appdynamics.extensions.pagerduty.common;
 
-import com.appdynamics.extensions.http.Response;
-import com.appdynamics.extensions.http.SimpleHttpClient;
-import com.appdynamics.extensions.pagerduty.Configuration;
-import org.apache.log4j.Logger;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
-import java.util.HashMap;
-import java.util.Map;
+
+import org.apache.log4j.Logger;
+
+import com.appdynamics.TaskInputArgs;
+import com.appdynamics.extensions.http.Response;
+import com.appdynamics.extensions.http.SimpleHttpClient;
+import com.appdynamics.extensions.pagerduty.Configuration;
+import com.google.common.base.Strings;
 
 public class HttpHandler {
 
@@ -51,6 +55,26 @@ public class HttpHandler {
         if(isSSLEnabled()) {
             map.put("use-ssl", "true");
         }
+		if (!Strings.isNullOrEmpty(this.config.getProxy().getHost())) {
+			map.put(TaskInputArgs.PROXY_HOST, this.config.getProxy().getHost());
+		}
+		if (!Strings.isNullOrEmpty(this.config.getProxy().getPort())) {
+			map.put(TaskInputArgs.PROXY_PORT, this.config.getProxy().getPort());
+		}
+		if (!Strings.isNullOrEmpty(this.config.getProxy().getUri())) {
+			map.put(TaskInputArgs.PROXY_URI, this.config.getProxy().getUri());
+		}
+		if (!Strings.isNullOrEmpty(this.config.getProxy().getUser())) {
+			map.put(TaskInputArgs.PROXY_USER, this.config.getProxy().getUser());
+			// Don't put any password if not specified
+			if (!Strings.isNullOrEmpty(this.config.getProxy().getPassword())) {
+				map.put(TaskInputArgs.PROXY_PASSWORD, this.config.getProxy().getPassword());
+			}
+			else if (!Strings.isNullOrEmpty(this.config.getProxy().getPasswordEncrypted())) {
+				map.put(TaskInputArgs.PROXY_PASSWORD_ENCRYPTED, this.config.getProxy().getPasswordEncrypted());
+			}
+		}
+		
         return map;
     }
 

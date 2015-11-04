@@ -3,15 +3,15 @@ package com.appdynamics.extensions.pagerduty;
 
 public class Configuration {
 
-    private String serviceKey;
-    private String protocol;
-    private String host;
-    private String connectTimeout = "10000";
-    private String socketTimeout = "10000";
-    private String urlPath;
-    private String showDetails = "false";
-    private String controllerUrl;
-
+	private String serviceKey;
+	private String protocol;
+	private String host;
+	private String connectTimeout = "10000";
+	private String socketTimeout = "10000";
+	private String urlPath;
+	private String showDetails = "false";
+	private String controllerUrl;
+	private Proxy proxy;
 
     public String getServiceKey() {
         return serviceKey;
@@ -76,4 +76,13 @@ public class Configuration {
     public void setControllerUrl(String controllerUrl) {
         this.controllerUrl = controllerUrl;
     }
+
+	public Proxy getProxy() {
+		return proxy;
+	}
+
+	public void setProxy(Proxy proxy) {
+		this.proxy = proxy;
+	}
+	
 }

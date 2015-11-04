@@ -1,5 +1,5 @@
 #PagerDuty Service Key
-serviceKey: ""
+serviceKey: "52ed806083d844e5aa63b20a21eebb10"
 
 #scheme used (http/https)
 protocol: "https"
@@ -11,21 +11,20 @@ host: "events.pagerduty.com"
 urlPath: "/generic/2010-04-15/create_event.json"
 
 #http timeouts
-connectTimeout: 10000
-socketTimeout: 10000
+connectTimeout: 40000
+socketTimeout: 40000
 
 #show appdynamics details in pagerduty alert
 showDetails: false
 
 #public url for controller (http://<host>:<port> or https://<host>:<port>)
-controllerUrl : ""
+controllerUrl : "http://localhost:8090"
 
 #proxy details, either provide proxyUri or provide proxyHost and proxyPort.
 proxy:
- host:
- port:
+ host: "192.240.46.123"
+ port: 80
  uri:
- user:
+ user: 
  password:
  passwordEncrypted:
-

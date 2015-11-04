@@ -55,23 +55,23 @@ public class HttpHandler {
         if(isSSLEnabled()) {
             map.put("use-ssl", "true");
         }
-		if (!Strings.isNullOrEmpty(this.config.getProxyHost())) {
-			map.put(TaskInputArgs.PROXY_HOST, this.config.getProxyHost());
+		if (!Strings.isNullOrEmpty(this.config.getProxy().getHost())) {
+			map.put(TaskInputArgs.PROXY_HOST, this.config.getProxy().getHost());
 		}
-		if (!Strings.isNullOrEmpty(this.config.getProxyPort())) {
-			map.put(TaskInputArgs.PROXY_PORT, this.config.getProxyPort());
+		if (!Strings.isNullOrEmpty(this.config.getProxy().getPort())) {
+			map.put(TaskInputArgs.PROXY_PORT, this.config.getProxy().getPort());
 		}
-		if (!Strings.isNullOrEmpty(this.config.getProxyUri())) {
-			map.put(TaskInputArgs.PROXY_URI, this.config.getProxyUri());
+		if (!Strings.isNullOrEmpty(this.config.getProxy().getUri())) {
+			map.put(TaskInputArgs.PROXY_URI, this.config.getProxy().getUri());
 		}
-		if (!Strings.isNullOrEmpty(this.config.getProxyUser())) {
-			map.put(TaskInputArgs.PROXY_USER, this.config.getProxyUser());
+		if (!Strings.isNullOrEmpty(this.config.getProxy().getUser())) {
+			map.put(TaskInputArgs.PROXY_USER, this.config.getProxy().getUser());
 			// Don't put any password if not specified
-			if (!Strings.isNullOrEmpty(this.config.getProxyPassword())) {
-				map.put(TaskInputArgs.PROXY_PASSWORD, this.config.getProxyPassword());
+			if (!Strings.isNullOrEmpty(this.config.getProxy().getPassword())) {
+				map.put(TaskInputArgs.PROXY_PASSWORD, this.config.getProxy().getPassword());
 			}
-			else if (!Strings.isNullOrEmpty(this.config.getProxyPasswordEncrypted())) {
-				map.put(TaskInputArgs.PROXY_PASSWORD_ENCRYPTED, this.config.getProxyPasswordEncrypted());
+			else if (!Strings.isNullOrEmpty(this.config.getProxy().getPasswordEncrypted())) {
+				map.put(TaskInputArgs.PROXY_PASSWORD_ENCRYPTED, this.config.getProxy().getPasswordEncrypted());
 			}
 		}
 		

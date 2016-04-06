@@ -55,26 +55,26 @@ public class HttpHandler {
         if(isSSLEnabled()) {
             map.put("use-ssl", "true");
         }
-		if (!Strings.isNullOrEmpty(this.config.getProxy().getHost())) {
-			map.put(TaskInputArgs.PROXY_HOST, this.config.getProxy().getHost());
-		}
-		if (!Strings.isNullOrEmpty(this.config.getProxy().getPort())) {
-			map.put(TaskInputArgs.PROXY_PORT, this.config.getProxy().getPort());
-		}
-		if (!Strings.isNullOrEmpty(this.config.getProxy().getUri())) {
-			map.put(TaskInputArgs.PROXY_URI, this.config.getProxy().getUri());
-		}
-		if (!Strings.isNullOrEmpty(this.config.getProxy().getUser())) {
-			map.put(TaskInputArgs.PROXY_USER, this.config.getProxy().getUser());
-			// Don't put any password if not specified
-			if (!Strings.isNullOrEmpty(this.config.getProxy().getPassword())) {
-				map.put(TaskInputArgs.PROXY_PASSWORD, this.config.getProxy().getPassword());
-			}
-			else if (!Strings.isNullOrEmpty(this.config.getProxy().getPasswordEncrypted())) {
-				map.put(TaskInputArgs.PROXY_PASSWORD_ENCRYPTED, this.config.getProxy().getPasswordEncrypted());
-			}
-		}
-		
+        if(this.config.getProxy() != null) {
+            if (!Strings.isNullOrEmpty(this.config.getProxy().getHost())) {
+                map.put(TaskInputArgs.PROXY_HOST, this.config.getProxy().getHost());
+            }
+            if (!Strings.isNullOrEmpty(this.config.getProxy().getPort())) {
+                map.put(TaskInputArgs.PROXY_PORT, this.config.getProxy().getPort());
+            }
+            if (!Strings.isNullOrEmpty(this.config.getProxy().getUri())) {
+                map.put(TaskInputArgs.PROXY_URI, this.config.getProxy().getUri());
+            }
+            if (!Strings.isNullOrEmpty(this.config.getProxy().getUser())) {
+                map.put(TaskInputArgs.PROXY_USER, this.config.getProxy().getUser());
+                // Don't put any password if not specified
+                if (!Strings.isNullOrEmpty(this.config.getProxy().getPassword())) {
+                    map.put(TaskInputArgs.PROXY_PASSWORD, this.config.getProxy().getPassword());
+                } else if (!Strings.isNullOrEmpty(this.config.getProxy().getPasswordEncrypted())) {
+                    map.put(TaskInputArgs.PROXY_PASSWORD_ENCRYPTED, this.config.getProxy().getPasswordEncrypted());
+                }
+            }
+        }
         return map;
     }
 
